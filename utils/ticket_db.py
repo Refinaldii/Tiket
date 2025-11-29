@@ -24,8 +24,10 @@ def get_ticket(ticket_id):
     return None
 
 def add_comment(ticket_id, author, text):
+    COMMENTS.setdefault(ticket_id, [])
     COMMENTS[ticket_id].append({
-        "at": datetime.utcnow(),
+        "at": datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S"),
         "author": author,
         "text": text
     })
+
